@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+ allow_unauthenticated_access only: %i[ index show ]
  before_action :set_product, only: %i[ show edit update destroy]
 
   def index
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to_product_path
+    redirect_to product_path
   end
 
   private
